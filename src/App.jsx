@@ -356,41 +356,88 @@ function Btn({ children, onClick, href, variant = "primary", style = {}, target 
    NAV
 ───────────────────────────────────────────── */
 function Nav({ scrolled, active }) {
-  const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  const [menuOpen, setMenuOpen] = useState(false);
+  const scrollTo = (id) => { document.getElementById(id)?.scrollIntoView({ behavior: "smooth" }); setMenuOpen(false); };
+
   return (
-    <nav style={{
-      position: "fixed", top: 2, left: 0, right: 0, zIndex: 200,
-      display: "flex", alignItems: "center", justifyContent: "space-between",
-      padding: "1.25rem clamp(1.5rem,4vw,3rem)",
-      background: scrolled ? "rgba(8,8,14,0.92)" : "transparent",
-      backdropFilter: scrolled ? "blur(16px)" : "none",
-      borderBottom: scrolled ? "1px solid #1c1c2a" : "1px solid transparent",
-      transition: "all 0.35s ease",
-    }}>
-      <button onClick={() => scrollTo("hero")}
-        style={{ fontFamily: "sans-serif", fontWeight: 800, fontSize: "1.05rem", letterSpacing: "-0.02em", color: "#6ee7b7", background: "none", border: "none", cursor: "pointer" }}>
-        NS<span style={{ color: "#e8e8f0" }}>.dev</span>
-      </button>
-      <ul style={{ display: "flex", gap: "2rem", listStyle: "none", margin: 0, padding: 0 }}>
-        {NAV_LINKS.map(l => {
-          const id = l.toLowerCase();
-          const isActive = active === id;
-          return (
-            <li key={l}>
-              <button onClick={() => scrollTo(id)}
-                style={{ fontFamily: "monospace", fontSize: "0.7rem", fontWeight: 500, letterSpacing: "0.12em", textTransform: "uppercase", background: "none", border: "none", cursor: "pointer", color: isActive ? "#6ee7b7" : "#6b6b80", transition: "color 0.2s", padding: "0.25rem 0", borderBottom: isActive ? "1px solid #6ee7b7" : "1px solid transparent" }}
-                onMouseEnter={e => e.currentTarget.style.color = "#6ee7b7"}
-                onMouseLeave={e => e.currentTarget.style.color = isActive ? "#6ee7b7" : "#6b6b80"}>
-                {l}
-              </button>
-            </li>
-          );
-        })}
-      </ul>
-      <Btn href="mailto:njstanley08@gmail.com" variant="outline" style={{ fontSize: "0.72rem", padding: "0.5rem 1.2rem", letterSpacing: "0.1em" }}>
-        Hire Me
-      </Btn>
-    </nav>
+    <>
+      <nav style={{
+        position: "fixed", top: 2, left: 0, right: 0, zIndex: 200,
+        display: "flex", alignItems: "center", justifyContent: "space-between",
+        padding: "1.25rem clamp(1.5rem,4vw,3rem)",
+        background: scrolled || menuOpen ? "rgba(8,8,14,0.96)" : "transparent",
+        backdropFilter: scrolled ? "blur(16px)" : "none",
+        borderBottom: scrolled ? "1px solid #1c1c2a" : "1px solid transparent",
+        transition: "all 0.35s ease",
+      }}>
+        {/* Logo */}
+        <button onClick={() => scrollTo("hero")}
+          style={{ fontFamily: "sans-serif", fontWeight: 800, fontSize: "1.05rem", letterSpacing: "-0.02em", color: "#6ee7b7", background: "none", border: "none", cursor: "pointer", zIndex: 201 }}>
+          NS<span style={{ color: "#e8e8f0" }}>.dev</span>
+        </button>
+
+        {/* Desktop links */}
+        <ul style={{ display: "flex", gap: "2rem", listStyle: "none", margin: 0, padding: 0, "@media(max-width:768px)": { display: "none" } }} className="desktop-nav">
+          {NAV_LINKS.map(l => {
+            const id = l.toLowerCase();
+            const isActive = active === id;
+            return (
+              <li key={l}>
+                <button onClick={() => scrollTo(id)}
+                  style={{ fontFamily: "monospace", fontSize: "0.7rem", fontWeight: 500, letterSpacing: "0.12em", textTransform: "uppercase", background: "none", border: "none", cursor: "pointer", color: isActive ? "#6ee7b7" : "#6b6b80", transition: "color 0.2s", padding: "0.25rem 0", borderBottom: isActive ? "1px solid #6ee7b7" : "1px solid transparent" }}
+                  onMouseEnter={e => e.currentTarget.style.color = "#6ee7b7"}
+                  onMouseLeave={e => e.currentTarget.style.color = isActive ? "#6ee7b7" : "#6b6b80"}>
+                  {l}
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+
+        {/* Desktop hire me */}
+        <div className="desktop-nav">
+          <Btn href="mailto:njstanley08@gmail.com" variant="outline" style={{ fontSize: "0.72rem", padding: "0.5rem 1.2rem", letterSpacing: "0.1em" }}>
+            Hire Me
+          </Btn>
+        </div>
+
+        {/* Mobile hamburger */}
+        <button onClick={() => setMenuOpen(o => !o)} className="mobile-nav"
+          style={{ background: "none", border: "none", cursor: "pointer", color: "#e8e8f0", display: "flex", flexDirection: "column", gap: 5, padding: "0.25rem", zIndex: 201 }}>
+          <span style={{ display: "block", width: 24, height: 2, background: menuOpen ? "#6ee7b7" : "#e8e8f0", transition: "all 0.3s", transform: menuOpen ? "rotate(45deg) translate(5px, 5px)" : "none" }} />
+          <span style={{ display: "block", width: 24, height: 2, background: menuOpen ? "#6ee7b7" : "#e8e8f0", transition: "all 0.3s", opacity: menuOpen ? 0 : 1 }} />
+          <span style={{ display: "block", width: 24, height: 2, background: menuOpen ? "#6ee7b7" : "#e8e8f0", transition: "all 0.3s", transform: menuOpen ? "rotate(-45deg) translate(5px, -5px)" : "none" }} />
+        </button>
+      </nav>
+
+      {/* Mobile menu overlay */}
+      <div style={{
+        position: "fixed", inset: 0, zIndex: 199,
+        background: "rgba(8,8,14,0.98)",
+        display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "2.5rem",
+        opacity: menuOpen ? 1 : 0,
+        pointerEvents: menuOpen ? "all" : "none",
+        transition: "opacity 0.3s ease",
+      }}>
+        {NAV_LINKS.map((l, i) => (
+          <button key={l} onClick={() => scrollTo(l.toLowerCase())}
+            style={{
+              fontFamily: "sans-serif", fontSize: "2.2rem", fontWeight: 800, color: "#e8e8f0",
+              background: "none", border: "none", cursor: "pointer", letterSpacing: "-0.03em",
+              transition: `color 0.2s, transform 0.3s ease ${i * 60}ms, opacity 0.3s ease ${i * 60}ms`,
+              transform: menuOpen ? "translateY(0)" : "translateY(20px)",
+              opacity: menuOpen ? 1 : 0,
+            }}
+            onMouseEnter={e => e.currentTarget.style.color = "#6ee7b7"}
+            onMouseLeave={e => e.currentTarget.style.color = "#e8e8f0"}>
+            {l}
+          </button>
+        ))}
+        <Btn href="mailto:njstanley08@gmail.com" style={{ marginTop: "1rem" }}>
+          Hire Me <Icon name="mail" size={15} />
+        </Btn>
+      </div>
+    </>
   );
 }
 
@@ -905,6 +952,12 @@ export default function App() {
         ::-webkit-scrollbar-track { background: #08080e; }
         ::-webkit-scrollbar-thumb { background: #1c1c2a; border-radius: 3px; }
         ::-webkit-scrollbar-thumb:hover { background: #6ee7b7; }
+        .desktop-nav { display: flex; }
+        .mobile-nav { display: none; }
+        @media (max-width: 768px) {
+          .desktop-nav { display: none !important; }
+          .mobile-nav { display: flex !important; }
+        }
       `}</style>
       <ScrollProgress />
       <Nav scrolled={scrolled} active={activeSection} />
