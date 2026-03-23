@@ -1,9 +1,10 @@
 import { useState, useEffect, useRef, useCallback } from "react";
+import Services from "./Services";
 
 /* ─────────────────────────────────────────────
    DATA
 ───────────────────────────────────────────── */
-const NAV_LINKS = ["About", "Skills", "Timeline", "Projects", "Contact"];
+const NAV_LINKS = ["About", "Skills", "Timeline", "Projects", "Services", "Contact"];
 
 const STATS = [
   { num: 7, suffix: "+", label: "Years Experience" },
@@ -403,7 +404,7 @@ function Nav({ scrolled, active }) {
 
         {/* Mobile hamburger */}
         <button onClick={() => setMenuOpen(o => !o)} className="mobile-nav"
-          style={{ background: "none", border: "none", cursor: "pointer", color: "#e8e8f0", display: "flex", flexDirection: "column", gap: 5, padding: "0.25rem", zIndex: 201 }}>
+          style={{ background: "none", border: "none", cursor: "pointer", color: "#e8e8f0", flexDirection: "column", gap: 5, padding: "0.25rem", zIndex: 201 }}>
           <span style={{ display: "block", width: 24, height: 2, background: menuOpen ? "#6ee7b7" : "#e8e8f0", transition: "all 0.3s", transform: menuOpen ? "rotate(45deg) translate(5px, 5px)" : "none" }} />
           <span style={{ display: "block", width: 24, height: 2, background: menuOpen ? "#6ee7b7" : "#e8e8f0", transition: "all 0.3s", opacity: menuOpen ? 0 : 1 }} />
           <span style={{ display: "block", width: 24, height: 2, background: menuOpen ? "#6ee7b7" : "#e8e8f0", transition: "all 0.3s", transform: menuOpen ? "rotate(-45deg) translate(5px, -5px)" : "none" }} />
@@ -456,13 +457,13 @@ function Hero() {
   });
 
   return (
-    <section id="hero" style={{ minHeight: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", padding: "0 clamp(1.5rem,4vw,3rem)", position: "relative", overflow: "hidden" }}>
+    <section id="hero" style={{ minHeight: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", padding: "0 clamp(1.5rem,4vw,3rem)", position: "relative", overflow: "hidden" }}>
       <ParticleCanvas />
 
       {/* subtle vignette */}
       <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 60% 70% at 50% 50%, transparent 30%, rgba(8,8,14,0.7) 100%)", pointerEvents: "none" }} />
 
-      <div style={{ position: "relative", maxWidth: 820, zIndex: 1 }}>
+      <div style={{ position: "relative", maxWidth: 820, width: "100%", zIndex: 1 }}>
         <div style={{ ...fade(100), fontFamily: "monospace", fontSize: "0.72rem", color: "#6ee7b7", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: "1.5rem", display: "flex", alignItems: "center", gap: "0.75rem" }}>
           <span style={{ display: "inline-block", width: 8, height: 8, borderRadius: "50%", background: "#6ee7b7", animation: "blink 1.5s ease-in-out infinite" }} />
           Available for opportunities
@@ -813,7 +814,7 @@ function Contact() {
 
   return (
     <section id="contact" style={{ padding: "8rem clamp(1.5rem,4vw,3rem)", borderTop: "1px solid #1c1c2a" }}>
-      <SectionLabel>05 — Contact</SectionLabel>
+      <SectionLabel>06 — Contact</SectionLabel>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "5rem", alignItems: "start" }}>
         <div>
           <Reveal>
@@ -898,8 +899,8 @@ function Footer() {
   return (
     <footer style={{ padding: "2.5rem clamp(1.5rem,4vw,3rem)", borderTop: "1px solid #1c1c2a", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "1rem" }}>
       <p style={{ fontFamily: "monospace", fontSize: "0.7rem", color: "#6b6b80" }}>© 2026 <span style={{ color: "#6ee7b7" }}>Nicholas Stanley</span>. All rights reserved.</p>
-      <div style={{ display: "flex", gap: "1.5rem" }}>
-        {["About", "Skills", "Timeline", "Projects", "Contact"].map(l => (
+      <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
+        {["About", "Skills", "Timeline", "Projects", "Services", "Contact"].map(l => (
           <button key={l} onClick={() => scrollTo(l.toLowerCase())}
             style={{ fontFamily: "monospace", fontSize: "0.7rem", color: "#6b6b80", background: "none", border: "none", cursor: "pointer", transition: "color 0.2s" }}
             onMouseEnter={e => e.currentTarget.style.color = "#6ee7b7"}
@@ -927,7 +928,7 @@ export default function App() {
 
     const onScroll = () => {
       setScrolled(window.scrollY > 40);
-      const ids = ["contact", "projects", "timeline", "skills", "about", "hero"];
+      const ids = ["contact", "services", "projects", "timeline", "skills", "about", "hero"];
       for (const id of ids) {
         const el = document.getElementById(id);
         if (el && window.scrollY >= el.offsetTop - 250) { setActiveSection(id); break; }
@@ -966,6 +967,7 @@ export default function App() {
       <Skills />
       <Timeline />
       <Projects />
+      <Services />
       <Contact />
       <Footer />
     </div>
