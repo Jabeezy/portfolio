@@ -7,7 +7,7 @@ const TIERS = [
   {
     num: "01",
     name: "Refresh",
-    price: "$450",
+    price: "$500",
     color: "#6ee7b7",
     desc: "For sites that need a modernized look without starting over. Same platform, better everything.",
     features: [
@@ -20,7 +20,7 @@ const TIERS = [
   {
     num: "02",
     name: "Redesign",
-    price: "$1,200",
+    price: "$2,000",
     color: "#818cf8",
     featured: true,
     desc: "A full visual rebuild — new layout, better branding, improved UX across all devices.",
@@ -35,7 +35,7 @@ const TIERS = [
   {
     num: "03",
     name: "Full Build",
-    price: "$2,500",
+    price: "$5,000",
     color: "#f472b6",
     desc: "Brand new site built from the ground up with every page and feature you need.",
     features: [
@@ -76,9 +76,9 @@ const PHASES = [
 ];
 
 const ADDONS = [
-  { name: "Monthly Maintenance", desc: "Content updates, bug fixes, keeping things running", price: "$85/mo" },
+  { name: "Monthly Maintenance", desc: "Content updates, bug fixes, keeping things running", price: "$200/mo" },
   { name: "Logo & Brand Identity", desc: "Custom logo design and basic brand guidelines", price: "$200" },
-  { name: "Extra Pages", desc: "Any page beyond what's included in your tier", price: "$75/page" },
+  { name: "Extra Pages", desc: "Any page beyond what's included in your tier", price: "$100/page" },
   { name: "Rush Delivery", desc: "Priority turnaround — delivery within 5 business days", price: "+25%" },
 ];
 
