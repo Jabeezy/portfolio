@@ -1,6 +1,11 @@
 import { useState } from "react";
 
 /* ─────────────────────────────────────────────
+   VISIBILITY FLAGS
+───────────────────────────────────────────── */
+const SHOW_PHASES = false;
+
+/* ─────────────────────────────────────────────
    DATA
 ───────────────────────────────────────────── */
 const TIERS = [
@@ -48,7 +53,7 @@ const TIERS = [
   },
 ];
 
- /* const PHASES = [
+  const PHASES = [
   {
     num: "Phase 01",
     name: "Core Site",
@@ -73,7 +78,7 @@ const TIERS = [
     desc: "Membership pages, join forms, portals, or e-commerce layered on top.",
     items: ["Join / membership page", "Member info display", "Optional payment integration", "Gated content"],
   },
-]; */
+]; 
 
 const ADDONS = [
   { name: "Monthly Maintenance", desc: "Content updates, bug fixes, keeping things running", price: "$200/mo" },
@@ -252,16 +257,20 @@ export default function Services() {
       </div>
 
       {/* ── Phases ── */}
-      <div style={{ fontFamily: "monospace", fontSize: "0.68rem", color: "#818cf8", letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: "0.75rem", display: "flex", alignItems: "center", gap: "0.75rem" }}>
-        // Phased Approach
-        <div style={{ width: 32, height: 1, background: "#818cf8", opacity: 0.3 }} />
-      </div>
-      <p style={{ fontFamily: "monospace", fontSize: "0.78rem", color: "#6b6b80", lineHeight: 1.75, maxWidth: 520, marginBottom: "1.5rem" }}>
-        If a full build isn't in the budget right now, we can break it into phases. Pay for what you need today — expand later.
-      </p>
-      <div className="services-phases-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1.25rem", marginBottom: "5rem" }}>
-        {PHASES.map((p) => <PhaseCard key={p.num} {...p} />)}
-      </div>
+      {SHOW_PHASES && (
+        <>
+          <div style={{ fontFamily: "monospace", fontSize: "0.68rem", color: "#818cf8", letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: "0.75rem", display: "flex", alignItems: "center", gap: "0.75rem" }}>
+            // Phased Approach
+            <div style={{ width: 32, height: 1, background: "#818cf8", opacity: 0.3 }} />
+          </div>
+          <p style={{ fontFamily: "monospace", fontSize: "0.78rem", color: "#6b6b80", lineHeight: 1.75, maxWidth: 520, marginBottom: "1.5rem" }}>
+            If a full build isn't in the budget right now, we can break it into phases. Pay for what you need today — expand later.
+          </p>
+          <div className="services-phases-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1.25rem", marginBottom: "5rem" }}>
+            {PHASES.map((p) => <PhaseCard key={p.num} {...p} />)}
+          </div>
+        </>
+      )}
 
       {/* ── Add-ons ── */}
       <div style={{ fontFamily: "monospace", fontSize: "0.68rem", color: "#fb923c", letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: "1.25rem", display: "flex", alignItems: "center", gap: "0.75rem" }}>

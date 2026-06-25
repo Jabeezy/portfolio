@@ -56,6 +56,20 @@ const TIMELINE = [
       "Developed custom tooling and scripts to automate detection and remediation",
     ],
   },
+
+  {
+    year: "Jan 2026-present",
+    role: "Founder & Lead Engineer",
+    company: "SecureEndpoint (SepSec.com)",
+    color: "#00d2ff",
+    bullets: [
+      "Founded and built a multi-tenant GRC compliance SaaS platform targeting FDIC-regulated financial institutions, managing the full product and client lifecycle independently",
+      "Designed and implemented customer onboarding workflows, platform configuration processes, and account provisioning systems for enterprise clients",
+      "Conducted live product demos with financial institution stakeholders, aligned on implementation requirements, and managed all post-sale onboarding communication",
+      "Built and maintained integrations with third-party services including payment processing (Stripe), transactional email (Resend), and external APIs",
+      "Developed internal automation tools to streamline repetitive onboarding and configuration tasks, reducing manual effort and accelerating time-to-live for new accounts",
+    ],
+  },
 ];
 
 const PROJECTS = [
@@ -63,7 +77,7 @@ const PROJECTS = [
     num: "01", title: "Free Agent Music Platform",
     desc: "Led end-to-end design and implementation of a full-stack music streaming platform. Engineered UX and performance improvements that drove a 45% viewership increase in just 6 months.",
     stack: ["React", "Node.js", "SQL", "Web APIs"],
-    link: "https://freeagentmusic.netlify.app/", linkLabel: "Live Site",
+    link: "https://freeagentmusic.org/", linkLabel: "Live Site",
   },
   {
     num: "02", title: "Vulnerability Remediation System",
@@ -95,6 +109,13 @@ const PROJECTS = [
     stack: ["React", "JavaScript", "CSS", "Netlify"],
     link: "https://healthcareequal.netlify.app/", linkLabel: "Live Site",
   },
+
+  {
+  num: "07", title: "SecureEndpoint",
+  desc: "Multi-tenant GRC SaaS for FDIC-regulated banks. React + Node.js + PostgreSQL. Live CVE/CISA KEV feeds, PowerShell GPO agent, DPAPI encryption, and compliance reporting built for audit day.",
+  stack: ["React", "TypeScript", "Node.js", "PostgreSQL", "PowerShell", "Railway"],
+  link: "https://sepsec.com/", linkLabel: "Live Site",
+},
 ];
 
 
@@ -478,7 +499,7 @@ function Hero() {
           <span style={{ display: "inline-block", width: 2, height: "1.1em", background: "#6ee7b7", animation: "blink 1s step-end infinite", verticalAlign: "middle" }} />
         </div>
         <p style={{ ...fade(550), fontFamily: "monospace", fontSize: "clamp(0.82rem, 1.3vw, 0.95rem)", color: "#6b6b80", maxWidth: 500, lineHeight: 1.85, marginBottom: "3rem" }}>
-          7+ years bridging data engineering and business automation. I turn messy backlogs, legacy debt, and ambitious ideas into shipped products.
+          8+ years bridging data engineering and business automation. I turn messy backlogs, legacy debt, and ambitious ideas into shipped products.
         </p>
         <div style={{ ...fade(700), display: "flex", gap: "1rem", flexWrap: "wrap" }}>
           <Btn onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}>
@@ -529,7 +550,7 @@ function About() {
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "4rem", alignItems: "start" }}>
         <Reveal delay={100}>
           <div style={{ fontFamily: "monospace", fontSize: "0.875rem", color: "#6b6b80", lineHeight: 1.85 }}>
-            <p style={{ marginBottom: "1.25rem" }}>I'm a <strong style={{ color: "#e8e8f0", fontWeight: 500 }}>Product Manager & former Lead Developer</strong> with 7+ years shipping scalable web applications and data-driven business tools.</p>
+            <p style={{ marginBottom: "1.25rem" }}>I'm a <strong style={{ color: "#e8e8f0", fontWeight: 500 }}>Product Manager & former Lead Developer</strong> with 8+ years shipping scalable web applications and data-driven business tools.</p>
             <p style={{ marginBottom: "1.25rem" }}>Expert in <strong style={{ color: "#e8e8f0", fontWeight: 500 }}>backlog management</strong> — reduced high-priority tech debt by 80% at Apple Bank via strategic cross-functional prioritization.</p>
             <p style={{ marginBottom: "1.25rem" }}>At <strong style={{ color: "#e8e8f0", fontWeight: 500 }}>Free Agent Music</strong> since 2018, I've led full-stack delivery from concept to deployment using AI-assisted RAD without sacrificing architectural integrity.</p>
             <p style={{ marginBottom: "2rem" }}>Based in <strong style={{ color: "#e8e8f0", fontWeight: 500 }}>Indian Trail, NC</strong>. Open to remote opportunities.</p>
@@ -681,6 +702,12 @@ function Timeline() {
               <h3 style={{ fontFamily: "sans-serif", fontSize: "1.05rem", fontWeight: 700, marginBottom: "0.5rem" }}>Full Stack Development — Codecademy</h3>
               <p style={{ fontFamily: "monospace", fontSize: "0.78rem", color: "#6b6b80", lineHeight: 1.7 }}>Advanced coursework in Database Management (RDBMS/NoSQL) and Distributed Systems.</p>
             </div>
+             
+            <div style={{ background: "#0f0f18", border: "1px solid #1c1c2a", borderRadius: 10, padding: "1.5rem 1.75rem", flex: 1 }}>
+              <div style={{ fontFamily: "monospace", fontSize: "0.68rem", color: "#fb923c", letterSpacing: "0.1em", marginBottom: "0.4rem" }}>Education & Certs</div>
+              <h3 style={{ fontFamily: "sans-serif", fontSize: "1.05rem", fontWeight: 700, marginBottom: "0.5rem" }}>CS50 CyberSecurity — Harvard</h3>
+              <p style={{ fontFamily: "monospace", fontSize: "0.78rem", color: "#6b6b80", lineHeight: 1.7 }}>coursework in cryptography, authentication systems, network security, SQL injection, XSS, and defensive programming practices.</p>
+            </div>
           </div>
         </Reveal>
       </div>
@@ -793,14 +820,29 @@ function Contact() {
     return e;
   };
 
-  const handleSubmit = () => {
-    const e = validate();
-    if (Object.keys(e).length) { setErrors(e); return; }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const errs = validate();
+    if (Object.keys(errs).length) { setErrors(errs); return; }
     setStatus("sending");
-    const subject = encodeURIComponent(`Portfolio Contact from ${form.name}`);
-    const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`);
-    window.location.href = `mailto:njstanley08@gmail.com?subject=${subject}&body=${body}`;
-    setTimeout(() => { setStatus("sent"); setForm({ name: "", email: "", message: "" }); setErrors({}); }, 800);
+
+    const data = new FormData();
+    data.append("form-name", "portfolio-contact");
+    data.append("name", form.name);
+    data.append("email", form.email);
+    data.append("message", form.message);
+
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(data).toString(),
+    })
+      .then(() => {
+        setStatus("sent");
+        setForm({ name: "", email: "", message: "" });
+        setErrors({});
+      })
+      .catch(() => setStatus("error"));
   };
 
   const inputStyle = (field) => ({
@@ -850,29 +892,56 @@ function Contact() {
               <Btn onClick={() => setStatus("idle")} variant="ghost" style={{ fontSize: "0.75rem" }}>Send another →</Btn>
             </div>
           ) : (
-            <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+            <form
+              name="portfolio-contact"
+              method="POST"
+              data-netlify="true"
+              data-netlify-honeypot="bot-field"
+              onSubmit={handleSubmit}
+              style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}
+            >
+              {/* Netlify required hidden fields */}
+              <input type="hidden" name="form-name" value="portfolio-contact" />
+              <p style={{ display: "none" }}><input name="bot-field" /></p>
+
+              {status === "error" && (
+                <p style={{ fontFamily: "monospace", fontSize: "0.75rem", color: "#f87171", background: "rgba(248,113,113,0.08)", border: "1px solid rgba(248,113,113,0.2)", borderRadius: 6, padding: "0.75rem 1rem" }}>
+                  Something went wrong. Please try again or email me directly.
+                </p>
+              )}
+
               {["name", "email"].map(field => (
                 <div key={field}>
                   <label style={labelStyle}>{field === "name" ? "Your Name" : "Email Address"}</label>
-                  <input value={form[field]} onChange={e => { setForm(f => ({ ...f, [field]: e.target.value })); setErrors(er => ({ ...er, [field]: "" })); }}
-                    placeholder={field === "name" ? "Jane Smith" : "jane@company.com"} style={inputStyle(field)}
+                  <input
+                    name={field}
+                    value={form[field]}
+                    onChange={e => { setForm(f => ({ ...f, [field]: e.target.value })); setErrors(er => ({ ...er, [field]: "" })); }}
+                    placeholder={field === "name" ? "Jane Smith" : "jane@company.com"}
+                    style={inputStyle(field)}
                     onFocus={e => e.target.style.borderColor = "#6ee7b7"}
-                    onBlur={e => e.target.style.borderColor = errors[field] ? "#f87171" : "#2a2a3a"} />
+                    onBlur={e => e.target.style.borderColor = errors[field] ? "#f87171" : "#2a2a3a"}
+                  />
                   {errors[field] && <p style={{ fontFamily: "monospace", fontSize: "0.68rem", color: "#f87171", marginTop: "0.3rem" }}>{errors[field]}</p>}
                 </div>
               ))}
               <div>
                 <label style={labelStyle}>Message</label>
-                <textarea value={form.message} onChange={e => { setForm(f => ({ ...f, message: e.target.value })); setErrors(er => ({ ...er, message: "" })); }}
-                  placeholder="Tell me about your project or opportunity..." rows={5} style={inputStyle("message")}
+                <textarea
+                  name="message"
+                  value={form.message}
+                  onChange={e => { setForm(f => ({ ...f, message: e.target.value })); setErrors(er => ({ ...er, message: "" })); }}
+                  placeholder="Tell me about your project or opportunity..." rows={5}
+                  style={inputStyle("message")}
                   onFocus={e => e.target.style.borderColor = "#6ee7b7"}
-                  onBlur={e => e.target.style.borderColor = errors.message ? "#f87171" : "#2a2a3a"} />
+                  onBlur={e => e.target.style.borderColor = errors.message ? "#f87171" : "#2a2a3a"}
+                />
                 {errors.message && <p style={{ fontFamily: "monospace", fontSize: "0.68rem", color: "#f87171", marginTop: "0.3rem" }}>{errors.message}</p>}
               </div>
-              <Btn onClick={handleSubmit} style={{ alignSelf: "flex-start" }}>
-                {status === "sending" ? "Opening mail..." : <><Icon name="send" size={15} /> Send Message</>}
+              <Btn style={{ alignSelf: "flex-start" }}>
+                {status === "sending" ? "Sending..." : <><Icon name="send" size={15} /> Send Message</>}
               </Btn>
-            </div>
+            </form>
           )}
         </Reveal>
       </div>
