@@ -498,15 +498,13 @@ function Hero() {
           <Btn onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })} variant="outline">
             Get In Touch <Icon name="mail" size={15} />
           </Btn>
+          <Btn href="/NicholasStanley_Resume.pdf" variant="outline" target="_blank">
+            Resume <Icon name="download" size={15} />
+          </Btn>
           <Btn href="https://github.com/Jabeezy" variant="outline" target="_blank">
             GitHub <Icon name="external" size={15} />
           </Btn>
         </div>
-      </div>
-
-      <div style={{ position: "absolute", bottom: "2.5rem", left: "50%", transform: "translateX(-50%)", display: "flex", flexDirection: "column", alignItems: "center", gap: "0.5rem", zIndex: 1, ...fade(1400) }}>
-        <div style={{ width: 1, height: 40, background: "linear-gradient(to bottom, transparent, #6ee7b7, transparent)", animation: "scrollPulse 2s ease-in-out infinite" }} />
-        <span style={{ fontFamily: "monospace", fontSize: "0.6rem", color: "#6b6b80", letterSpacing: "0.15em", textTransform: "uppercase" }}>scroll</span>
       </div>
     </section>
   );
