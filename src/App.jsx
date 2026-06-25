@@ -675,16 +675,17 @@ function Timeline() {
                 <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#fb923c" }} />
               </div>
             </div>
-            <div style={{ background: "#0f0f18", border: "1px solid #1c1c2a", borderRadius: 10, padding: "1.5rem 1.75rem", flex: 1 }}>
-              <div style={{ fontFamily: "monospace", fontSize: "0.68rem", color: "#fb923c", letterSpacing: "0.1em", marginBottom: "0.4rem" }}>Education & Certs</div>
-              <h3 style={{ fontFamily: "sans-serif", fontSize: "1.05rem", fontWeight: 700, marginBottom: "0.5rem" }}>Full Stack Development — Codecademy</h3>
-              <p style={{ fontFamily: "monospace", fontSize: "0.78rem", color: "#6b6b80", lineHeight: 1.7 }}>Advanced coursework in Database Management (RDBMS/NoSQL) and Distributed Systems.</p>
-            </div>
-             
-            <div style={{ background: "#0f0f18", border: "1px solid #1c1c2a", borderRadius: 10, padding: "1.5rem 1.75rem", flex: 1 }}>
-              <div style={{ fontFamily: "monospace", fontSize: "0.68rem", color: "#fb923c", letterSpacing: "0.1em", marginBottom: "0.4rem" }}>Education & Certs</div>
-              <h3 style={{ fontFamily: "sans-serif", fontSize: "1.05rem", fontWeight: 700, marginBottom: "0.5rem" }}>CS50 CyberSecurity — Harvard</h3>
-              <p style={{ fontFamily: "monospace", fontSize: "0.78rem", color: "#6b6b80", lineHeight: 1.7 }}>coursework in cryptography, authentication systems, network security, SQL injection, XSS, and defensive programming practices.</p>
+            <div className="education-cards" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem", flex: 1 }}>
+              <div style={{ background: "#0f0f18", border: "1px solid #1c1c2a", borderRadius: 10, padding: "1.5rem 1.75rem" }}>
+                <div style={{ fontFamily: "monospace", fontSize: "0.68rem", color: "#fb923c", letterSpacing: "0.1em", marginBottom: "0.4rem" }}>Education & Certs</div>
+                <h3 style={{ fontFamily: "sans-serif", fontSize: "1.05rem", fontWeight: 700, marginBottom: "0.5rem" }}>Full Stack Development — Codecademy</h3>
+                <p style={{ fontFamily: "monospace", fontSize: "0.78rem", color: "#6b6b80", lineHeight: 1.7 }}>Advanced coursework in Database Management (RDBMS/NoSQL) and Distributed Systems.</p>
+              </div>
+              <div style={{ background: "#0f0f18", border: "1px solid #1c1c2a", borderRadius: 10, padding: "1.5rem 1.75rem" }}>
+                <div style={{ fontFamily: "monospace", fontSize: "0.68rem", color: "#fb923c", letterSpacing: "0.1em", marginBottom: "0.4rem" }}>Education & Certs</div>
+                <h3 style={{ fontFamily: "sans-serif", fontSize: "1.05rem", fontWeight: 700, marginBottom: "0.5rem" }}>CS50 CyberSecurity — Harvard</h3>
+                <p style={{ fontFamily: "monospace", fontSize: "0.78rem", color: "#6b6b80", lineHeight: 1.7 }}>Coursework in cryptography, authentication systems, network security, SQL injection, XSS, and defensive programming practices.</p>
+              </div>
             </div>
           </div>
         </Reveal>
@@ -1005,6 +1006,7 @@ export default function App() {
         @media (max-width: 768px) {
           .desktop-nav { display: none !important; }
           .mobile-nav { display: flex !important; }
+          .education-cards { grid-template-columns: 1fr !important; }
         }
       `}</style>
       <ScrollProgress />
