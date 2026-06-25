@@ -418,7 +418,7 @@ function Nav({ scrolled, active }) {
 
         {/* Desktop hire me */}
         <div className="desktop-nav">
-          <Btn href="mailto:njstanley08@gmail.com" variant="outline" style={{ fontSize: "0.72rem", padding: "0.5rem 1.2rem", letterSpacing: "0.1em" }}>
+          <Btn onClick={() => scrollTo("contact")} variant="outline" style={{ fontSize: "0.72rem", padding: "0.5rem 1.2rem", letterSpacing: "0.1em" }}>
             Hire Me
           </Btn>
         </div>
@@ -455,7 +455,7 @@ function Nav({ scrolled, active }) {
             {l}
           </button>
         ))}
-        <Btn href="mailto:njstanley08@gmail.com" style={{ marginTop: "1rem" }}>
+        <Btn onClick={() => { scrollTo("contact"); setMenuOpen(false); }} style={{ marginTop: "1rem" }}>
           Hire Me <Icon name="mail" size={15} />
         </Btn>
       </div>
