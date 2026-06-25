@@ -416,13 +416,6 @@ function Nav({ scrolled, active }) {
           })}
         </ul>
 
-        {/* Desktop hire me */}
-        <div className="desktop-nav">
-          <Btn onClick={() => scrollTo("contact")} variant="outline" style={{ fontSize: "0.72rem", padding: "0.5rem 1.2rem", letterSpacing: "0.1em" }}>
-            Hire Me
-          </Btn>
-        </div>
-
         {/* Mobile hamburger */}
         <button onClick={() => setMenuOpen(o => !o)} className="mobile-nav"
           style={{ background: "none", border: "none", cursor: "pointer", color: "#e8e8f0", flexDirection: "column", gap: 5, padding: "0.25rem", zIndex: 201 }}>
@@ -455,9 +448,6 @@ function Nav({ scrolled, active }) {
             {l}
           </button>
         ))}
-        <Btn onClick={() => { scrollTo("contact"); setMenuOpen(false); }} style={{ marginTop: "1rem" }}>
-          Hire Me <Icon name="mail" size={15} />
-        </Btn>
       </div>
     </>
   );
