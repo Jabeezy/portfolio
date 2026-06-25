@@ -875,7 +875,7 @@ function Contact() {
                 { label: "njstanley08@gmail.com", href: "mailto:njstanley08@gmail.com", icon: "mail" },
                 { label: "(636) 209-8799", href: "tel:6362098799", icon: "phone" },
                 { label: "nicholasstanley.netlify.app", href: "https://nicholasstanley.netlify.app/", icon: "external" },
-                { label: "LinkedIn", href: "https://linkedin.com/in/nicholasstanley", icon: "linkedin" },
+                { label: "LinkedIn", href: "https://www.linkedin.com/in/nstanley-dev/", icon: "linkedin" },
               ].map(cl => <ContactChip key={cl.label} {...cl} />)}
             </div>
           </Reveal>
