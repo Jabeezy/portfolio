@@ -534,19 +534,15 @@ function About() {
       <SectionLabel>01 — About</SectionLabel>
       <Reveal>
         <h2 style={{ fontFamily: "sans-serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "4rem" }}>
-          Product leader.<br />Engineer at heart.
+          Security-minded engineer.<br /><span style={{ color: "transparent", WebkitTextStroke: "1.5px #6ee7b7" }}>Product thinker by trade.</span>
         </h2>
       </Reveal>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "4rem", alignItems: "start" }}>
         <Reveal delay={100}>
           <div style={{ fontFamily: "monospace", fontSize: "0.875rem", color: "#6b6b80", lineHeight: 1.85 }}>
-            <p style={{ marginBottom: "1.25rem" }}>I'm a <strong style={{ color: "#e8e8f0", fontWeight: 500 }}>Product Manager & former Lead Developer</strong> with 8+ years shipping scalable web applications and data-driven business tools.</p>
-            <p style={{ marginBottom: "1.25rem" }}>Expert in <strong style={{ color: "#e8e8f0", fontWeight: 500 }}>backlog management</strong> — reduced high-priority tech debt by 80% at Apple Bank via strategic cross-functional prioritization.</p>
-            <p style={{ marginBottom: "1.25rem" }}>At <strong style={{ color: "#e8e8f0", fontWeight: 500 }}>Free Agent Music</strong> since 2018, I've led full-stack delivery from concept to deployment using AI-assisted RAD without sacrificing architectural integrity.</p>
-            <p style={{ marginBottom: "2rem" }}>Based in <strong style={{ color: "#e8e8f0", fontWeight: 500 }}>Indian Trail, NC</strong>. Open to remote opportunities.</p>
-            <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-              
-            </div>
+            <p style={{ marginBottom: "1.25rem" }}>I build things that work under pressure, from cutting a <strong style={{ color: "#e8e8f0", fontWeight: 500 }}>2,000-ticket CVE backlog by 80% at Apple Bank</strong> in 90 days, to founding <strong style={{ color: "#e8e8f0", fontWeight: 500 }}>SecureEndpoint</strong>, a GRC SaaS platform built for FDIC-regulated banks.</p>
+            <p style={{ marginBottom: "1.25rem" }}>8 years shipping full-stack products at <strong style={{ color: "#e8e8f0", fontWeight: 500 }}>Free Agent Music</strong>, a Warner ADA sublabel, handling everything from architecture to deployment, solo.</p>
+            <p style={{ marginBottom: "2rem" }}>I sit at the intersection of security, engineering, and product. Based in <strong style={{ color: "#e8e8f0", fontWeight: 500 }}>Indian Trail, NC</strong>. Open to remote.</p>
           </div>
         </Reveal>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.25rem" }}>
