@@ -8,7 +8,7 @@ const NAV_LINKS = ["About", "Skills", "Timeline", "Projects", "Services", "Conta
 
 const STATS = [
   { num: 8, suffix: "+", label: "Years Experience" },
-  { num: 80, suffix: "%", label: "Tech Debt Reduced" },
+  { num: 80, suffix: "%", label: "CVE Backlog Reduced" },
   { num: 45, suffix: "%", label: "Viewership Growth" },
   { num: 2000, suffix: "+", label: "Tickets Managed" },
 ];
@@ -25,10 +25,10 @@ const SKILL_BARS = [
   { label: "React / Node.js", pct: 92, color: "#6ee7b7" },
   { label: "SQL / Database Design", pct: 90, color: "#818cf8" },
   { label: "Python", pct: 82, color: "#818cf8" },
-  { label: "Product Management", pct: 94, color: "#f472b6" },
-  { label: "Agile / Scrum", pct: 96, color: "#f472b6" },
+  { label: "Cybersecurity / GRC", pct: 88, color: "#fb923c" },
+  { label: "Vulnerability Management", pct: 90, color: "#fb923c" },
   { label: "Cloud / DevOps", pct: 78, color: "#fb923c" },
-  { label: "Cybersecurity", pct: 75, color: "#fb923c" },
+  { label: "Agile / Scrum", pct: 85, color: "#f472b6" },
 ];
 
 const TIMELINE = [
@@ -60,7 +60,7 @@ const TIMELINE = [
   {
     year: "Jan 2026-present",
     role: "Founder & Lead Engineer",
-    company: "SecureEndpoint (SepSec.com)",
+    company: "SecureEndpoint",
     color: "#00d2ff",
     bullets: [
       "Founded and built a multi-tenant GRC compliance SaaS platform targeting FDIC-regulated financial institutions, managing the full product and client lifecycle independently",
@@ -458,7 +458,7 @@ function Nav({ scrolled, active }) {
 ───────────────────────────────────────────── */
 function Hero() {
   const [loaded, setLoaded] = useState(false);
-  const roles = ["Product Manager", "Full Stack Engineer", "Systems Builder", "Tech Lead"];
+  const roles = ["Security Engineer", "Full Stack Engineer", "GRC Engineer", "Systems Builder"];
   const typed = useTypewriter(roles);
   useEffect(() => { setTimeout(() => setLoaded(true), 100); }, []);
   const fade = (d) => ({
@@ -489,17 +489,17 @@ function Hero() {
           <span style={{ display: "inline-block", width: 2, height: "1.1em", background: "#6ee7b7", animation: "blink 1s step-end infinite", verticalAlign: "middle" }} />
         </div>
         <p style={{ ...fade(550), fontFamily: "monospace", fontSize: "clamp(0.82rem, 1.3vw, 0.95rem)", color: "#6b6b80", maxWidth: 500, lineHeight: 1.85, marginBottom: "3rem" }}>
-          8+ years bridging data engineering and business automation. I turn messy backlogs, legacy debt, and ambitious ideas into shipped products.
+          8+ years building full-stack products and securing enterprise systems. I ship clean code and lock down vulnerabilities.
         </p>
         <div style={{ ...fade(700), display: "flex", gap: "1rem", flexWrap: "wrap" }}>
           <Btn onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}>
             View My Work <Icon name="arrowDown" size={15} />
           </Btn>
-          <Btn href="mailto:njstanley08@gmail.com" variant="outline">
+          <Btn onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })} variant="outline">
             Get In Touch <Icon name="mail" size={15} />
           </Btn>
-          <Btn href="https://nicholasstanley.netlify.app/" variant="outline" target="_blank">
-            Live Portfolio <Icon name="external" size={15} />
+          <Btn href="https://github.com/Jabeezy" variant="outline" target="_blank">
+            GitHub <Icon name="external" size={15} />
           </Btn>
         </div>
       </div>
