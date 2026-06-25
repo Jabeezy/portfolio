@@ -48,7 +48,7 @@ const TIERS = [
   },
 ];
 
-const PHASES = [
+ /* const PHASES = [
   {
     num: "Phase 01",
     name: "Core Site",
@@ -73,7 +73,7 @@ const PHASES = [
     desc: "Membership pages, join forms, portals, or e-commerce layered on top.",
     items: ["Join / membership page", "Member info display", "Optional payment integration", "Gated content"],
   },
-];
+]; */
 
 const ADDONS = [
   { name: "Monthly Maintenance", desc: "Content updates, bug fixes, keeping things running", price: "$200/mo" },
