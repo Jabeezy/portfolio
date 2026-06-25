@@ -7,7 +7,7 @@ import Services from "./Services";
 const NAV_LINKS = ["About", "Skills", "Timeline", "Projects", "Services", "Contact"];
 
 const STATS = [
-  { num: 7, suffix: "+", label: "Years Experience" },
+  { num: 8, suffix: "+", label: "Years Experience" },
   { num: 80, suffix: "%", label: "Tech Debt Reduced" },
   { num: 45, suffix: "%", label: "Viewership Growth" },
   { num: 2000, suffix: "+", label: "Tickets Managed" },
@@ -545,13 +545,7 @@ function About() {
             <p style={{ marginBottom: "1.25rem" }}>At <strong style={{ color: "#e8e8f0", fontWeight: 500 }}>Free Agent Music</strong> since 2018, I've led full-stack delivery from concept to deployment using AI-assisted RAD without sacrificing architectural integrity.</p>
             <p style={{ marginBottom: "2rem" }}>Based in <strong style={{ color: "#e8e8f0", fontWeight: 500 }}>Indian Trail, NC</strong>. Open to remote opportunities.</p>
             <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-              <Btn href="mailto:njstanley08@gmail.com" variant="outline" style={{ fontSize: "0.78rem", padding: "0.65rem 1.5rem" }}>
-                <Icon name="mail" size={14} /> Say Hello
-              </Btn>
-              {/* 👉 Replace href with your actual hosted resume PDF URL */}
-              <Btn href="#" variant="ghost" style={{ fontSize: "0.78rem" }}>
-                <Icon name="download" size={14} /> Download Resume
-              </Btn>
+              
             </div>
           </div>
         </Reveal>
