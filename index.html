@@ -7,6 +7,13 @@
     <title>Nicholas Stanley | Product Manager & Engineer</title>
   </head>
   <body>
+    <!-- Netlify form detection -->
+    <form name="portfolio-contact" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <textarea name="message"></textarea>
+      <input name="bot-field" />
+    </form>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
